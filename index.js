@@ -2,6 +2,7 @@
 const express = require('express');
 
 const UserRouter = require('./routers/UserRouter');
+const ProductRouter = require('./routers/ProductRouter');
 
 
 //initialize express
@@ -13,6 +14,8 @@ const port=5000;
 app.use(express.json());// ye middleware btaega ki dta jo arha h vo json ki file me arha h
 
 app.use('/user',UserRouter);
+app.use(express.json());
+app.use('/product',ProductRouter);
 
 
 

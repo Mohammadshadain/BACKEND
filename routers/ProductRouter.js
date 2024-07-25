@@ -1,16 +1,20 @@
+const Model=require('../models/ProductModel');
+const express = require('express');
+const router=express.Router();
 router.get('/add',(req,res)=>{
 
-    res.sends('response from add');
+    res.send('response from add');
 
 })
 router.get('/getall',(req,res)=>{
-    res.sends('response from get all');
+    res.send('response from get all');
 }
     
 )
 router.get('/end',(req,res)=>{
-    res.sends('response from end');
+    res.send('response from end');
 });
 router.get('/start',(req,res)=>{
-    res.sends('response from start');
+    res.send('response from start');
 }) 
+module.exports = router;
