@@ -33,7 +33,7 @@ router.get('/getcity/:city',(req,res) => {
 
 
 router.get('/getemail/:email',(req,res) => {
-    Model.findOne({email :req.params.emai})
+    Model.findOne({email :req.params.email})
     .then((result) => {
         res.status(200).json(result);
         
@@ -55,7 +55,7 @@ router.get('/getbyid/:id',(req,res) => {
         
     });
 })
-router.delete('/deletebyid:id',(req,res) => {
+router.delete('/deletebyid/:id',(req,res) => {
     Model.findByIdAndDelete(req.params.id)
     .then((result) => {
         res.status(200).json(result);
@@ -66,8 +66,8 @@ router.delete('/deletebyid:id',(req,res) => {
         
     });
 })
-router.put('/updateid:id',(req,res) => {
-    Model.findByIdAndUpdate(req.params.id),({new:true})
+router.put('/updateid/:id',(req,res) => {
+    Model.findByIdAndUpdate(req.params.id ,req.body,{new:true})
     .then((result) => {
         res.status(200).json(result);
         
