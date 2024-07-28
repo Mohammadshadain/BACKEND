@@ -10,7 +10,7 @@ const mySchema = new Schema({
 
     price: String,
 
-    image: String,
+    
 
 })
 //exporting user model file

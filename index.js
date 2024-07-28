@@ -15,7 +15,7 @@ const port=5000;
 
 // cors whicch send data from frontend
 app.use(cors({
-    origin: ['http://localhost:3000'], // your client url of frontend 20/07
+    origin: ['http://localhost:3000'], // your client url of frontend 27/07
    
 }))
 app.use(express.json());// ye middleware btaega ki dta jo arha h vo json ki file me arha h
