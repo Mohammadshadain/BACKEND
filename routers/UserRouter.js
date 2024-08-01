@@ -1,6 +1,10 @@
+const { JsonWebTokenError } = require('jsonwebtoken');
 const Model=require('../models/UserModels');
 const express = require('express');
 const router=express.Router();
+const json=require('jsonwebtoken');
+require('dotenv').config();
+
 
 
 router.post('/add',(req,res) => {
@@ -97,6 +101,47 @@ router.get('/getall',(req,res) => {
     });
    
 })
+router.post('/authenticate',   (req,res)=>{
+    model.findOne(req.body)
+    .then((result) => {
+        if(result){
+            // payload,secretkey,experiy
+            // data 1 
+            const {_id,email,password}=result;
+            const payload={_id,email,password} ;  
+            jwt.sign(
+                payload,
+                process.env,SECRET_KEY,
+                {expiresIn:'1hr'},
+                (err,token)=>{
+                    if(err){
+                        console.log(err);
+                        res.status(500).json(err);
+                    }else{
+                        res.status(200).json({token:token})
+                    }
+                }
+
+
+            )
+            
+
+        }
+        else{
+            res.status(401).json({message:'Invaild'})
+
+            //jwt to generate a token
+
+        }
+        
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err); // waps se bhej denge then k pas
+        
+    });
+
+}
+)
 
 module.exports = router;
 
